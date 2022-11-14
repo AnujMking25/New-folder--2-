@@ -26,6 +26,7 @@
       <li class="list-group-item">Item 2</li>
       <li class="list-group-item">Item 3</li>
       <li class="list-group-item">Item 4</li>
+      <li>Item 5</li>
     </ul>
    </div>
   </div>
@@ -59,7 +60,7 @@
 //headerT.innerHTML='<h1>Hello</h1>'
 //headerT.style.borderBottom='solid 3px #000'//drow line
 
-//*************getElementByName****************
+//*************getElementByClassName****************
 //var item= document.getElementsByClassName('list-group-item')
 // console.log(item);
 // console.log(item[1]);
@@ -105,6 +106,17 @@
 //  ItemThree[i].style.fontWeight='bold';
 // }
 
+// **************************getElementByTagName******************************************
+var tagname=document.getElementsByTagName('li')
+console.log(tagname[2]);
+tagname[2].textContent='Hello';
+ tagname[2].style.fontWeight='bold';
+ tagname[2].style.backgroundColor='yellow';
+for(var i=0;i<tagname.length;i++)
+{
+  tagname[i].style.color='coral'
+  tagname[i].style.background='green'
+}
 
 
 
