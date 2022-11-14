@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+  <title>Item Lister</title>
+</head>
+<body>
+  <header id="main-header" class="bg-success text-white p-4 mb-3">
+    <div class="container">
+      <h1 id="header-title">Item Lister <span style="display:none">123</span></h1>
+    </div>
+  </header>
+  <div class="container">
+   <div id="main" class="card card-body">
+    <h2 class="title">Add Items</h2>
+    <form class="form-inline mb-3">
+      <input type="text" class="form-control mr-2">
+      <input type="submit" class="btn btn-dark" value="Submit">
+    </form>
+    <h2 class="title">Items</h2>
+    <ul id="items" class="list-group">
+      <li class="list-group-item">Item 1</li>
+      <li class="list-group-item">Item 2</li>
+      <li class="list-group-item">Item 3</li>
+      <li class="list-group-item">Item 4</li>
+    </ul>
+   </div>
+  </div>
+<script>
+  //console.dir(document);
+  //document.title='123';
+  //3wsconsole.log(document.domain); //not working
+//console.log(document.URL);
+// console.log(document.doctype);
+// console.log(document.head);
+// console.log(document.body);
+// console.log(document.all);
+// console.log(document.all[10]);\
+// document.all[10].textContent='Hello'
+// document.all[10].innerHTML='Jai Shree Ram'
+// console.log(document.forms[0]);
+// console.log(document.links);
+// console.log(document.images);
+
+//******************************888GETELEMENTBYID******************************
+// console.log(document.getElementById('header-title'));
+ //var headerT=document.getElementById('header-title')
+// console.log('headerT')
+// headerT.textContent='Hello';
+// headerT.innerText='Goodbye';
+// headerT.innerHTML='King25';
+
+// console.log(headerT.textContent); //style="display:none" hone pr bhi text ko dikhata hai
+// console.log(headerT.innerText);//style="display:none" text ko show nhi karega
+
+//headerT.innerHTML='<h1>Hello</h1>'
+//headerT.style.borderBottom='solid 3px #000'//drow line
+
+//*************getElementByName****************
+//var item= document.getElementsByClassName('list-group-item')
+// console.log(item);
+// console.log(item[1]);
+// item[1].textContent='Hello';
+// item[1].style.fontWeight='bold';
+// item[1].style.backgroundColor='yellow';
+
+//Give error
+//item.style.backgroundColor='red'
+
+// for(var i=0; i<item.length;i++)
+// {
+//   item[i].style.backgroundColor='#f4f4f4'
+// }
+
+//************************Queryselector************************************
+
+// var header=document.querySelector('#main-header');
+// header.style.borderBottom ='solid 4px #ccc';
+
+// var input =document.querySelector('input');
+// input.value='Hello World';
+
+// var submit=document.querySelector('input[type="submit"]');
+// submit.value='SEND'
+
+// var item=document.querySelector('.list-group-item')
+// item.style.color='red'
+
+// var secondItem=document.querySelector('.list-group-item:last-child');
+// secondItem.style.color='blue';
+
+// var secondItem=document.querySelector('.list-group-item:nth-child(2)');
+// secondItem.style.color='coral';
+
+//***********************getElementByClassName********************************************
+// var ItemThree=document.getElementsByClassName('list-group-item')
+
+//  ItemThree[2].style.backgroundColor='green';
+// var ItemThree=document.getElementsByClassName('list-group-item')
+// for(var i=0;i<ItemThree.length;i++)
+// {
+//  ItemThree[i].style.fontWeight='bold';
+// }
+
+
+
+
+</script>
+</body>
+</html>
