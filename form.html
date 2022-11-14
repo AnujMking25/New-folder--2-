@@ -78,7 +78,7 @@
 
 //************************Queryselector************************************
 
-// var header=document.querySelector('#main-header');
+//var header=document.querySelector('#main-header');
 // header.style.borderBottom ='solid 4px #ccc';
 
 // var input =document.querySelector('input');
@@ -94,9 +94,10 @@
 // secondItem.style.color='blue';
 
 // var secondItem=document.querySelector('.list-group-item:nth-child(2)');
-// secondItem.style.color='coral';
-
-//***********************getElementByClassName********************************************
+// secondItem.style.color='green';
+// var thirdItem=document.querySelector('.list-group-item:nth-child(3)')
+// thirdItem.innerHTML=''
+// ***********************getElementByClassName********************************************
 // var ItemThree=document.getElementsByClassName('list-group-item')
 
 //  ItemThree[2].style.backgroundColor='green';
@@ -106,17 +107,32 @@
 //  ItemThree[i].style.fontWeight='bold';
 // }
 
-// **************************getElementByTagName******************************************
-var tagname=document.getElementsByTagName('li')
-console.log(tagname[2]);
-tagname[2].textContent='Hello';
- tagname[2].style.fontWeight='bold';
- tagname[2].style.backgroundColor='yellow';
-for(var i=0;i<tagname.length;i++)
+//************************Queryselector************************************
+// var titles=document.querySelectorAll(".title");
+// console.log(titles);
+// titles[0].textContent='Hello'
+var even=document.querySelectorAll('li')
+even[1].style.color='green'
+
+var odd=document.querySelectorAll('li:nth-child(odd)')
+for(var i=0;i<odd.length;i++)
 {
-  tagname[i].style.color='coral'
-  tagname[i].style.background='green'
+  odd[i].style.backgroundColor='green'
 }
+
+
+
+// **************************getElementByTagName******************************************
+// var tagname=document.getElementsByTagName('li')
+// console.log(tagname[2]);
+// tagname[2].textContent='Hello';
+//  tagname[2].style.fontWeight='bold';
+//  tagname[2].style.backgroundColor='yellow';
+// for(var i=0;i<tagname.length;i++)
+// {
+//   tagname[i].style.color='coral'
+//   tagname[i].style.background='green'
+// }
 
 
 
