@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=s, initial-scale=1.0">
-    <title>Document1</title>
+    <title>task11</title>
     <style>
        * {
             margin: 0;
@@ -80,16 +80,22 @@
 
     <script type="text/javascript">
 var form = document.getElementById('my-form');
+var count=0;
 form.addEventListener('submit', addItem);
-function addItem(e){
-  e.preventDefault();
-   // Get input value
-  var newName = document.getElementById('name').value;
-  var newEmail = document.getElementById('email').value;
-  localStorage.setItem('Name',newName); 
- localStorage.setItem('Email',newEmail)
+function addItem(e) {
+    e.preventDefault();
+    let MyObj={
+            Name: document.getElementById('name').value,
+            Email: document.getElementById('email').value
+        };
 
+        let MyObj_serialized =JSON.stringify(MyObj);
+        
+        count++;
+         localStorage.setItem("MyObj"+count,MyObj_serialized);
+          console.log(localStorage);
 }
+
    
     </script>
 </body>
