@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=s, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+       * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+         }
+         body {
+                font-family: Arial, Helvetica, sans-serif;
+                line-height: 1.6;
+              }
+
+        header {
+                background: #f4f4f4;
+                padding: 1rem;
+                text-align: center;
+                }
+    .container {
+                    margin: auto;
+                    width: 500px;
+                    overflow: auto;
+                    padding: 3rem 2rem;
+                }
+                
+    #my-form    {
+                padding: 2rem;
+                background: #f4f4f4;
+                 }
+    #my-form label {
+                     display: block;
+                    }
+     #my-form input[type='text'] {
+                                    width: 100%;
+                                    padding: 8px;
+                                    margin-bottom: 10px;
+                                    border-radius: 5px;
+                                    border: 1px solid #ccc;
+                                     }
+      .btn {
+                display: block;
+                width: 100%;
+                padding: 10px 15px;
+                border: 0;
+                background: #333;
+                color: #fff;
+                border-radius: 5px;
+                margin: 5px 0;
+            }
+     .btn:hover {
+                 background: #444;
+                 }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Sharpener World</h1>
+    </header>
+    <section class="container">
+        <form id="my-form">
+            <h1>Add Student</h1>
+            <div class="msg"></div>
+            <div>
+                <label for="name">Name:</label>
+                <input type="text" id="name">
+            </div>
+            <div>
+                <label for="email">Email:</label>
+                <input type="text" id="email">
+            </div>
+            <input class="btn" type="submit" value="submit">
+         </form>
+
+    </section>
+
+    <script>
+var form = document.getElementById('my-form');
+form.addEventListener('submit', addItem);
+function addItem(e){
+  e.preventDefault();
+   // Get input value
+  var newName = document.getElementById('name').value;
+  var newEmail = document.getElementById('email').value;
+  localStorage.setItem('Name',newName); 
+ localStorage.setItem('Email',newEmail)
+}
+   
+    </script>
+</body>
+</html>
