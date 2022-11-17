@@ -75,7 +75,9 @@
             </div>
             <input class="btn" type="submit" value="submit">
          </form>
-
+         <ul id="items" class="list-group">
+            <!-- <li></li> -->
+         </ul>
     </section>
 
     <script type="text/javascript">
@@ -94,6 +96,26 @@ function addItem(e) {
         count++;
          localStorage.setItem("MyObj"+count,MyObj_serialized);
           console.log(localStorage);
+
+          //***********************************Display Data***********************
+var itemList = document.getElementById('items');
+  
+  // Get input value
+  var newItem = document.getElementById('name').value;
+
+//GET input Email 
+var newItemEmail=document.getElementById('email').value;
+
+newItem=newItem+' '+newItemEmail;
+  // Create new li element
+  var li = document.createElement('li');
+  // Add class
+  li.className = 'list-group-item';
+  // Add text node with input value
+  li.appendChild(document.createTextNode(newItem));
+
+  // Append li to list
+  itemList.appendChild(li);
 }
 
    
