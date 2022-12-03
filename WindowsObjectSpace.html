@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+// var a = 2;
+// var c = 2;
+// function b(){
+// var x = 2;
+// var c = 4
+// console.log(c)
+// }
+
+// console.log(a);
+// console.log(this.a);
+// console.log(this.c)
+// console.log(this.x)
+// console.log(window.a)
+// console.log(window.x)
+// console.log(b());
+// *******************************
+// function abc() {
+// console.log(a);
+// }
+// var a = 7;
+// abc();
+// ***************************
+
+// function abc() {
+// console.log(a);
+// }
+// abc();
+// var a = 7;
+//********************************888
+// function outerfunction() {
+// console.log(a);
+// var c = 10;
+// innerfunction();
+// function innerfunction() {
+// console.log(b);
+// console.log(c);
+// }
+// }
+// var a = 7;
+// var b =3
+// outerfunction();
+
+// **************************************
+
+// function outerfunction() {
+// console.log(a);
+//  var a = 10;
+// innerfunction();
+// function innerfunction() {
+// console.log(a);
+// console.log(window.a);
+// console.log(this.a)
+// }
+// }
+// var a = 7;
+// var b =3
+// outerfunction();
+
+// ***********************************deference between let and var***************8888
+// console.log(a);     //Cannot access 'a' before initialization
+// let a=10;
+// var b=5;    
+//*********************************************
+// let a=10;
+// console.log(a);     
+// var b=5;    //window.b
+//*********************************************
+// console.log(a)
+// console.log(b);
+// let a =5;
+// var b =6;
+// console.log(b);
+//**************************************************
+// console.log(a);
+// var a = 5;
+// console.log(b)
+
+//let a = 5;
+// var b = 6;
+// console.log(this.b);
+// console.log(window.b)
+// console.log(window.a)
+// console.log(this.a);
+//**********************************
+// let a =5;
+// let a = 6;
+//*********************************
+
+var obj={
+    "Key1":"value1",
+    "Key2":"value2",
+    "Key3":"value3",
+    "Key4":"value4",
+
+} 
+//console.log(Object.keys(obj));
+var arrOFKyes=Object.keys(obj);
+
+arrOFKyes.forEach(key=>{console.log(obj[key]);})
+</script>
+</body>
+</html>
