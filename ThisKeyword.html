@@ -1,0 +1,86 @@
+<script>
+//     'use strict';
+// // house       (this=>global scope)
+//       this.table='window table'
+//    console.log(window.table);
+   
+// **********************this inside a function
+//    const cleanTable=function(a){
+    
+//     console.log(`cleaning ${a.table}`);
+// }
+// cleanTable(this);
+
+// **********************************************
+//     this.garage={
+// table:'garage table',
+// cleanTable(){
+//             console.log(`cleaning ${this.table}`);
+//         }
+//     };
+//     console.log(this.garage.table);
+
+
+// *******************************private
+// let AnujRoom={
+//         table:'Anuj Table'
+// };
+// console.log(this.AnujRoom.table);
+// console.log(AnujRoom.table);
+
+// *********************************
+// 'this' inside a Method
+// let AnujRoom={
+//         table:'Anuj Table',
+//         cleanTable(){
+//             console.log(`cleaning ${this.table}`);
+//         }
+// };
+// AnujRoom.cleanTable();
+
+
+// **********************call function to rescue
+// 'use strict';
+//       this.table='window table'
+//    const cleanTable=function(soap){
+//     console.log(`cleaning ${this.table} using ${soap}`);
+// }
+// cleanTable.call(this,'some soap');
+
+// let createRoom=function(name){
+//     this.table=`${name} table`
+// }
+// const kirtiRoom=new createRoom('Kirti');
+// const AnujRoom=new createRoom('Anuj');
+let count=0;
+class Student {
+//    static count;
+//   count=0;
+  constructor(name,age,phone_number,board_marks) {
+    this.name = name;
+    this.age = age;
+    this.phone_number=phone_number;
+    this.board_marks=board_marks;
+     count++;
+    
+  }
+
+  Checkegligible(){
+      
+       if(this.board_marks>40)return console.log('egligible');
+       else return console.log('not egligible');
+     
+  }
+  TotalNoOfStudent(){
+    return console.log(count);
+  }
+}
+
+const stu = new Student("Anuj",22, 6312345645,89);
+const stu1 = new Student("Anoop",22, 6312345645,89);
+const stu2 = new Student("saksham",22, 6312345645,89);
+const stu3 = new Student("Rohit",22, 6312345645,89);
+stu.Checkegligible();
+stu1.Checkegligible();
+stu.TotalNoOfStudent()
+</script>
