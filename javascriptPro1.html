@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form onsubmit="saveToLocalStorage(event)">
+                <label for="">Choose Expenseamount</label>
+                <input type="number" id="Cexpen">
+            
+                <label for="">Choose discription</label>
+                <input type="text" id="Cdis">
+            
+                <label for="">Choose a category</label>
+                <input type="text" id="Ccat">
+           
+        <button>Add Expense</button>
+    </form>
+    <ul id='listOfitems'></ul>
+    <script>
+        function saveToLocalStorage(event){
+        event.preventDefault();
+        const Expenseamount=event.target.Cexpen.value;
+        const discription=event.target.Cdis.value;
+        const category=event.target.Ccat.value;
+       // console.log(Expenseamount);
+       const obj={
+                     Expenseamount,
+                    discription,
+                    category
+                }
+
+       localStorage.setItem(obj.category, JSON.stringify(obj))
+       showListofRegisteredExpense(obj)
+        }
+        window.addEventListener('DOMContentLoaded', (event) => {
+                Object.keys(localStorage).forEach(key => {
+                    const user = JSON.parse(localStorage.getItem(key))
+                    showListofRegisteredExpense(user)
+                })
+            })
+
+            function showListofRegisteredExpense(user){
+
+const parentNode = document.getElementById('listOfitems');
+const createNewUserHtml = `<li id='${user.category}'>${user.Expenseamount} => ${user.discription} => ${user.category}
+                            <button onclick=deleteUser('${user.category}')>Delete</button>
+                            <button onclick="edituser('${user.Expenseamount}','${user.discription}','${user.category}')">edit </button>
+                            </li>`
+
+parentNode.innerHTML = parentNode.innerHTML+ createNewUserHtml;
+
+
+}
+
+function deleteUser(category) {
+
+localStorage.removeItem(category)
+removeItemFromScreen(category)
+}
+
+function removeItemFromScreen(category){
+const parentNode = document.getElementById('listOfitems');
+const elem = document.getElementById(category)
+parentNode.removeChild(elem);
+}
+
+function edituser(category,Expenseamount,discription)
+{
+console.log(category,Expenseamount,discription);
+    document.getElementById("Cexpen").value=Expenseamount
+    document.getElementById("Ccat").value=category
+    document.getElementById("Cdis").value=discription
+    removeItemFromScreen(category)
+
+
+}
+    </script>
+</body>
+</html>

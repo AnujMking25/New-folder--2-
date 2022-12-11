@@ -1,0 +1,69 @@
+<script>
+
+// const obj1={
+//             name:'Anuj',
+//             age:22,
+//     }
+//     const obj2=obj1;        //here i am passing reference og obj1.
+//                         //  if i change anything obj2 so obj1 also change because reference is some
+//     obj2.name='Anuj Mishra'
+//     obj2.fullname='Anuj Mishra'
+//     console.log(obj2);
+//     console.log(obj1);
+
+    // *********************************Object*********************
+//     const obj1={
+//             name:'Anuj',
+//             age:22,
+//     }
+//     const obj2={...obj1};       //this is spread operator.spread operator is passing new 
+//                                // reference of obj1(first create copy of reference).so original
+//                                 // obj1 is not effected by any  change of obj2
+
+//   obj2.name='Anuj Mishra'
+//     //const obj2={...obj1,home:'Prayagraj'};
+//     console.log(obj1);
+//     console.log(obj2);
+
+// *********************Arrary***************************
+                                                // part1
+// const arr1=[1,2];
+// const arr2=[3,4];
+// const arr3=[...arr1,...arr2];
+// console.log(arr3);
+                                                // part2
+// const arr1=[{a:1},{b:2,c:3},{d:4},6]
+// const arr2=[3,4];
+// const arr3=[...arr1,...arr2];
+// console.log(arr3);
+
+// ******************** ADD Array+Object /Object+Array ******************
+
+// const arr1=[{a:1},{b:2,c:3},{d:4},6]
+// const arr2=[3,4];
+// const obj={name:'Anuj',
+//             age:22}
+// const arr3=[...arr1,...arr2,{...obj}];
+// console.log(arr3)
+
+// const obj1={...obj,...arr1}
+// console.log(obj1);
+
+
+// ***********************avarage of objectvalue***********
+const studentobj = {
+	'yash': 26,
+	'vaibhav': 24,
+	'rajesh' : 25,
+	}
+    console.log(Object.keys(studentobj));
+   
+    const arr1=Object.values(studentobj)
+let avg=0;
+    arr1.forEach(ele => {
+    // console.log(ele);
+    avg=avg+ele;
+});
+avg=avg/arr1.length
+console.log(avg);
+</script>
