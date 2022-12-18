@@ -19,7 +19,10 @@ body {
     min-height: 50px;
     font-size: 2rem;
   }
-  
+  .thead
+  {
+font-weight: bold;
+  }
   @media (min-width: 576px) {
     body::before {
       content: "SM";

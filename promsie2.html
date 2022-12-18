@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise2</title>
+</head>
+<body>
+    <script>
+        const posts=[
+            {
+            title:'Post One',
+            body:'This is post one'},
+            {title:'Post Two',
+            body:'This is post two'}
+            ];
+            
+        function getPosts(){
+           setTimeout(
+                ()=>{
+                    let output='';
+                    posts.forEach((post,index)=>{
+                        output+=`<li>${post.title}</li>`;
+                    });
+                    document.body.innerHTML=output;
+                },1000);
+            }
+    
+        function creatPost(post){
+            return new Promise((resolve,reject)=>{
+                setTimeout(()=>{
+                posts.push(post);
+                
+                const error=false;
+                if(!error){
+                    resolve();
+                }else {
+                    reject('Error: Something went wrong');
+                }
+            },1000);
+            });   
+        }
+        // creatPost({title: 'post Three',body: 'This is post three'}).then(getPosts)
+        //  .catch(err=>console.log(err));
+
+        let a=1000;
+         function deletePost(posts,getPosts)
+         {a+=2000;
+            return new Promise((resolve,reject)=>{
+                setTimeout(()=>{
+             
+            
+                if(posts.length!=0){
+                    resolve();
+                    posts.pop();
+                }else {
+                    reject('Error: Array is empty now');
+                }
+                getPosts();
+            },a)
+            });
+         }
+        // deletePost(posts,getPosts);
+        // deletePost(posts,getPosts);
+        // deletePost(posts,getPosts);
+    
+
+        // creatPost({title: 'post four',body: 'This is post four'}).then(getPosts)
+        //  .catch(err=>console.log(err));
+        //  deletePost(posts,getPosts);
+
+        // promise.all
+
+        const promise1=Promise.resolve('Hello World');
+        const promise2=10;
+        const promise3=new Promise((resolve,reject)=>
+        setTimeout(resolve,2000,'Goodbye')
+        );
+        const promise4=fetch('https://jsonplaceholder.typicode.com/users').then(res=>res.json());
+
+        Promise.all([promise1,promise2,promise3,promise4]).then(values=>console.log(values));
+        </script>
+</body>
+</html>

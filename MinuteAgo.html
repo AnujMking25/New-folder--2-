@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MinuteAgo</title>
+</head>
+<body>
+    <script>
+        const posts=[{title:'Post One',body:'This is post one',createdAt:new Date().getSeconds()},
+                    {title:'Post Two', body:'This is post two',createdAt: new Date().getSeconds()}];
+                
+        let intervalid=0;
+    
+        function getposts(){
+            clearInterval(intervalid);
+            intervalid=setInterval(()=>{
+                let output='';
+                posts.forEach((T,index)=>{
+                    output+=`<li>${T.title} createdat ${(new Date().getSeconds()- T.createdAt)} second ago</li>`
+                });
+                document.body.innerHTML=output;
+            },1000);
+         } 
+         getposts();    
+         function creatPost(post,callback){
+                  setTimeout(()=>{
+                    posts.push({...post,createdAt: new Date().getSeconds()});
+                    callback();
+                    },2000);
+                     }
+         creatPost({title :'Post Three',body:'This is post three'},getposts);
+
+    </script>
+</body>
+</html>

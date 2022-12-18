@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>setInterval</title>
+    <style>
+        #box{
+            width: 0px;
+            height: 0px;
+            background: red;
+            
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+
+    <script>
+        var id=setInterval(anim,500);
+
+        let a=0;
+        function anim(){
+            a+=10;
+            if(a==200)
+            {
+                clearInterval(id);
+            }else {
+                var target=document.getElementById("box")                       // for normal code use this
+                target.style.marginTop=a+'px'       
+                target.style.marginLeft =a*2 +'px';   //for margin              // for normal code use this with 150px hight and width
+                target.style.height=a +'px';        //for decreasing height
+                target.style.width=a +'px';         //for decreasing width
+                if(a>50 && a<=60)
+                {
+                    target.style.borderRadius=a/5+'px'
+                }else if(a>60 && a<=70){
+                    target.style.borderRadius=a/3+'px'
+                }else if(a>70){
+                    target.style.borderRadius=a/2+'px'
+                }
+               
+            }
+        }
+    </script>
+</body>
+</html>

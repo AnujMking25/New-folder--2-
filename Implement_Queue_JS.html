@@ -1,0 +1,51 @@
+<script>
+class Queue
+{
+	constructor()
+	{
+		this.items = [];
+	}
+	isEmpty()
+	{
+
+		return this.items.length == 0;
+	}
+	enqueue(element)
+	{
+		this.items.push(element);
+		document.write(element + " enqueued to queue<br>");
+	}
+	dequeue()
+	{
+	
+		if(this.isEmpty())
+			return "Underflow<br>";
+		return this.items.shift();
+	}
+	front()
+	{
+		
+		if(this.isEmpty())
+			return "No elements in Queue<br>";
+		return this.items[0];
+	}
+	rear()
+	{
+	
+		if(this.isEmpty())
+			return "No elements in Queue<br>";
+		return this.items[this.items.length-1];
+	}
+}
+var queue = new Queue();
+queue.enqueue(10);
+queue.enqueue(20);
+queue.enqueue(30);
+queue.enqueue(40);
+
+document.write(queue.dequeue() + " dequeued from queue<br>");
+
+document.write("Front item is " + queue.front() + "<br>");
+
+document.write("Rear item is " + queue.rear() + "<br>");
+</script>

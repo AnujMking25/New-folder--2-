@@ -14,11 +14,48 @@
 // setTimeout(()=> console.log('c'), 1000);
 // console.log('d');
 
-console.log('a');
-console.log('b');
-setTimeout(()=> console.log('c'), 1000);
-setTimeout(()=> console.log('c'), 0);
-console.log('d')
+// console.log('a');
+// console.log('b');
+// setTimeout(()=> console.log('c'), 1000);
+// setTimeout(()=> console.log('c'), 0);
+// console.log('d')
+
+
+// setTimeout + closure(Try tp print table )
+// *******************************************
+function x(){
+    for (var i = 0; i< 5; i++) { 
+        setTimeout(function(){
+         console.log(i);
+        },i*1000) 
+    }
+}
+x();
+// *********************************************
+
+// function x(){
+//     for (let i = 0; i< 5; i++) { 
+//         setTimeout(function(){
+//          console.log(i);
+//         },i*1000) 
+//     }
+// }
+// x();
+
+// *******************************************
+// var a=4;
+// function x(){
+//     for (var i = 0; i< 5; i++) { 
+//             function close(i){
+//         setTimeout(function(){
+//          console.log(i);
+//         },i*1000) }
+//         close(i)
+//     }
+// }
+// x();
+
+
     </script>
 </body>
 </html>
