@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise</title>
+    
+</head>
+<body>
+   <script>
+    let taskDone=true;
+    let prom=new Promise(function(resolve,reject){
+        if(taskDone){
+            resolve("I am success");
+        }else{
+            reject("I am batter then success");
+        }
+    });
+    console.log(prom);
+   </script>
+   
+</body>
+</html>

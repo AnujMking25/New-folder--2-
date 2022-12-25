@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise2</title>
+</head>
+<body>
+    
+    <script>
+        function prom(complete){
+            return new Promise(function(resolve,reject){
+               console.log("please wait for transacation......")
+                setTimeout(()=>{ if(complete) 
+                    resolve(" payment successfull");
+                else 
+                  reject("Payment not done");
+                },1000);
+            });
+        }
+
+        prom(true)
+                .then((result)=>{  console.log(result);
+                                // document.write(result)
+                            })
+                .catch((result)=>{
+                console.log(result);
+        });
+    </script>
+</body>
+</html>
