@@ -8,35 +8,101 @@
 </head>
 <body>
     <script>
+        //***************************Step1*********************************
 
+    //     console.log('Person1: show ticket');
+    //     console.log('person2: show ticket');
+
+    //     const PromiseWifiBringingTicks=new Promise((resolve,reject)=>{
+    //         setTimeout(()=>{
+    //             resolve('ticket');
+    //         },3000)
+    //     });
+
+    //     const getPopcorn= PromiseWifiBringingTicks.then((t)=>{
+    //         console.log('wife: I have the tics ');
+    //         console.log('husband: we should go in ');
+    //         console.log('wife: no i am hungry');
+    //         return new Promise((resolve,reject)=>resolve(`${t} popcorn`));
+    //     });
+    //     const getButter= getPopcorn.then((t)=>{
+    //         console.log('husband: I got some Popcorn ');
+    //         console.log('husband: we should go in ');
+    //         console.log('wife: I need butter on my popcorn');
+    //         return new Promise((resolve,reject)=>resolve(`${t} butter`));
+    //     });
+
+    //    const getColdDrinks= getButter.then((t)=>{
+    //         console.log('husband: I got butter ');
+    //         console.log('husband: we should go in ');
+    //         console.log('wife: I need Cold drink on my popcorn');
+        
+    //     return new Promise((resolve,reject)=>resolve(`${t} Cold Drinks`))
+    //     });
+    //     getColdDrinks.then((t)=>console.log(t));
+    //     console.log('person 4: shows ticket');
+    //     console.log('person 5: shows ticket');
+
+//***************************Step2*********************************
+        
         // console.log('Person1: show ticket');
         // console.log('person2: show ticket');
+        // const preMovie=async ()=>{
 
-        // const PromiseWifiBringingTicks=new Promise((resolve,reject)=>{
-        //     setTimeout(()=>{
-        //         resolve('ticket');
-        //     },3000)
-        // });
+        //     const PromiseWifiBringingTicks=new Promise((resolve,reject)=>{
+        //     setTimeout(()=>resolve('ticket'),3000)
+        //             });
+        //           let ticket=await PromiseWifiBringingTicks;
+        //           return ticket;
+        // }
+        // preMovie().then((m)=>console.log(m));
 
-        // const getPopcorn= PromiseWifiBringingTicks.then((t)=>{
-        //     console.log('wife: Ihave the tics ');
+        // console.log('Person4: show ticket');
+        // console.log('person5: show ticket');
+
+        //***********************************Step3***************************
+        // console.log('Person1: show ticket');
+        // console.log('person2: show ticket');
+        // const preMovie=async ()=>{
+
+        //     const PromiseWifiBringingTicks=new Promise((resolve,reject)=>{
+        //     setTimeout(()=>resolve('ticket'),3000)
+        //             });
+        //         const getPopcorn= new Promise((resolve,reject)=>resolve(`popcorn`));
+        //         const addButter= new Promise((resolve,reject)=>resolve(`butter`));
+        //         const coldDrink= new Promise((resolve,reject)=>resolve(`Cold drink`));
+            
+        //     let ticket=await PromiseWifiBringingTicks;   
+        //     console.log(`wife: I have the ${ticket}`);
         //     console.log('husband: we should go in ');
         //     console.log('wife: no i am hungry');
-        //     return new Promise((resolve,reject)=>resolve(`${t} popcorn`));
-        // });
-        // const getButter= getPopcorn.then((t)=>{
-        //     console.log('husband: I got some Popcorn ');
+
+        //     let popcorn =await getPopcorn;
+        //     console.log(`husband: I got some ${popcorn}`);
         //     console.log('husband: we should go in ');
         //     console.log('wife: I need butter on my popcorn');
-        //     return new Promise((resolve,reject)=>resolve(`${t}butter`));
-        // });
 
-        // getButter.then((t)=>console.log(t));
-        // console.log('person 4: shows ticket');
-        // console.log('person 5: shows ticket');
+        //     let butter=await addButter;
+        //     console.log(`husband: I got some ${butter}`);
+        //     console.log(`husband: anything else darling?`);
+        //     console.log(`Wife: Yes I want cold drink`);
+        //     console.log(`husband: okk`);
 
+        //     let drink=await coldDrink;
+        //     console.log(`husband: I got  ${drink}}`);
+        //     console.log(`husband: anything else darling?`);
+        //     console.log(`Wife: lets got we are getting late`);
+        //     console.log(`husband: Thank you for that reminder`);
+
+        //     return ticket;
+        // }
+        // preMovie().then((m)=>console.log(m));
+
+        // console.log('Person4: show ticket');
+        // console.log('person5: show ticket');
 
         
+        //***********************************Step4***************************
         console.log('Person1: show ticket');
         console.log('person2: show ticket');
         const preMovie=async ()=>{
@@ -44,9 +110,17 @@
             const PromiseWifiBringingTicks=new Promise((resolve,reject)=>{
             setTimeout(()=>resolve('ticket'),3000)
                     });
-                    
+                const getPopcorn= new Promise((resolve,reject)=>resolve(`popcorn`));
+                const getCandy= new Promise((resolve,reject)=>resolve(`candy`));
+                const getCoke= new Promise((resolve,reject)=>resolve(`Cold drink`));
+            
+            let ticket=await PromiseWifiBringingTicks;   
+
+            let [popcorn,condy,coke]=await Promise.all([getPopcorn,getCandy,getCoke]);
+            console.log(`${popcorn} ${condy} ${coke}`);
+            return ticket;
         }
-        
+        preMovie().then((m)=>console.log(`Person3: show ${m}`));
 
         console.log('Person4: show ticket');
         console.log('person5: show ticket');

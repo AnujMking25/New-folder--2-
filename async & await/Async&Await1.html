@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>try & catch</title>
+</head>
+<body>
+    
+    <script>
+       async function dadmakepromise(){
+       try{
+       
+        const dadpromise =await new Promise((resolve,reject)=>{
+            setTimeout(()=>{
+            var salaryCredited=true;
+            var salary=330001;
+            var costofps5=40000;
+            var costofps4= 30000;
+            if(salaryCredited===true && salary>costofps5){
+                resolve('Buy him a ps3')
+            }else if(salaryCredited===true && salary>costofps4){
+                reject('Buy him a ps4')
+            }else {
+                reject('sorry son, i will try next month')
+            }
+            },1000)
+        })
+        console.log(dadpromise);
+       }catch(err){
+        console.log(err);
+       }
+       } 
+       dadmakepromise();
+    </script>
+</body>
+</html>

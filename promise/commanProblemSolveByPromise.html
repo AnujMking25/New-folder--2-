@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comman Problem Solve By Promise</title>
+</head>
+<body>
+    <script>
+        // ***************Problem1******************************
+        // async function playplaystation(){
+        //     console.log('a');
+        //     console.log('b');
+        //     const message=await new Promise((res,rej)=>{
+        //         setTimeout(()=>{res('Buying a playStation')},1000)
+        //     })
+        //     console.log(message);
+        //     const message2= await new Promise((res,rej)=>{
+        //          setTimeout(()=>{
+        //             console.log('Starting the ps5')
+        //             res('Booting ps5')},500);
+        //     })
+           
+        //     console.log(message2)
+        //     console.log('Playing');
+        // }
+        // playplaystation();
+
+        // **********************problem2 (Creating a call back hell)*****************************
+        // function BuyCar(plan,reach){
+        //     setTimeout(()=>{
+        //         console.log('Buy a car');
+        //         plan(reach);
+        //     },1000)
+        // }
+
+        //  function PlanTrip(reach){
+        //     setTimeout(()=>{
+        //         console.log('Let go to manali');
+        //         reach();
+        //     },2000)
+        // }
+        //  function ReachManali(){
+        //     setTimeout(()=>{
+        //         console.log('Reach Manali');
+                
+        //     },1000)
+        // }
+        // BuyCar(PlanTrip,ReachManali);
+        // *********************************Why are Promise invented(to safe for call back)************************
+         function BuyCar(){
+            return new Promise((res,rej)=>{
+                setTimeout(()=>{
+                    res('Buy a car')},1000)
+            })  
+        }
+         function PlanTrip(){
+            return new Promise((res,rej)=>{
+                    setTimeout(()=>{
+                    res('Let go to manali');
+                    },2000)
+            })
+          
+        }
+         function ReachManali(){
+            return new Promise((res,rej)=>{
+                setTimeout(()=>{
+                res('Reach Manali');
+            },1000)
+            })
+            
+        }
+        BuyCar()
+                .then((msg)=>{
+                    console.log(msg);
+
+                    PlanTrip().then((msg)=>{
+                                console.log(msg);
+                                ReachManali().then((msg)=>{
+                                                console.log(msg);
+                                                });
+                             });
+                
+                    });
+               
+    </script>
+</body>
+</html>

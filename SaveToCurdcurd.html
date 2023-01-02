@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Save To Curdcurd</title>
+</head>
+
+    <body>
+
+        <form onsubmit="saveToLocalStorage(event)">
+            <label> Name</label>
+            <input type="text" id="username" name="username"  required/>
+            <label> EmailId</label>
+            <input type="email" id="emailId" name="emailId"  required/>
+            <label> Phone Number</label>
+            <input type="tel" id="phonenumber" name="phonenumber" />
+            <button > Submit </button>
+        </form>
+        <ul id='listOfitems'></ul>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+        <script>
+showListofRegisteredUser()
+            function saveToLocalStorage(event) {
+                event.preventDefault();
+                const name = event.target.username.value;
+                const email = event.target.emailId.value;
+                const phonenumber = event.target.phonenumber.value;
+  
+                const obj = {
+                    name,
+                    email,
+                    phonenumber
+                }
+                axios.post('https://crudcrud.com/api/edd8f280eaed4aebabc7f50d094bbe60/appointmentData', obj)
+                .then(res=>console.log(res))
+                .catch(err=>console.log(err))
+                // localStorage.setItem(obj.email, JSON.stringify(obj))
+            
+            }
+            // window.addEventListener('DOMContentLoaded', (event) => {
+            //     Object.keys(localStorage).forEach(key => {
+            //         const user = JSON.parse(localStorage.getItem(key))
+            //         showListofRegisteredUser()
+            //     })
+            // })
+            function showListofRegisteredUser(){
+
+
+                axios('https://crudcrud.com/api/edd8f280eaed4aebabc7f50d094bbe60/appointmentData')
+                .then((res)=>{
+                    // console.log(res.data);
+                    // console.log(res);
+                
+                    const parentNode = document.getElementById('listOfitems');
+                   
+                    res.data.forEach(element => {
+                        const createNewUserHtml = `<li >${element.name} => ${element.email} => ${element.phonenumber}
+                                            <button onclick=deleteUser()>Delete</button>
+                                            <button onclick="edituser()">edit </button>
+                                            </li>`
+                //console.log(createNewUserHtml)
+                parentNode.innerHTML = parentNode.innerHTML+ createNewUserHtml;
+                    });
+                
+                })
+                .catch(err=>console.log(err))
+               
+             
+
+            }
+            function deleteUser(email) {
+
+                localStorage.removeItem(email)
+                removeItemFromScreen(email)
+            }
+            function removeItemFromScreen(email){
+                const parentNode = document.getElementById('listOfitems');
+                const elem = document.getElementById(email)
+                parentNode.removeChild(elem);
+            }
+
+            function edituser(email,name,phonenumber)
+            {
+                console.log(email,name,phonenumber);
+                    document.getElementById("username").value=name
+                    document.getElementById("emailId").value=email
+                    document.getElementById("phonenumber").value=phonenumber
+                    removeItemFromScreen(email)
+                
+
+            }
+        </script>
+
+    </body>
+
+</html>
