@@ -10,6 +10,11 @@
     <script>
         //***************************Step1*********************************
 
+<<<<<<< HEAD
+=======
+       //***************************Step1*********************************
+
+>>>>>>> 1bd81496334dbf32fa0db8ea08cde8268af17d15
     //     console.log('Person1: show ticket');
     //     console.log('person2: show ticket');
 
@@ -103,6 +108,7 @@
 
         
         //***********************************Step4***************************
+<<<<<<< HEAD
         console.log('Person1: show ticket');
         console.log('person2: show ticket');
         const preMovie=async ()=>{
@@ -121,9 +127,105 @@
             return ticket;
         }
         preMovie().then((m)=>console.log(`Person3: show ${m}`));
+=======
+//         console.log('Person1: show ticket');
+//         console.log('person2: show ticket');
+//         const preMovie=async ()=>{
 
-        console.log('Person4: show ticket');
-        console.log('person5: show ticket');
+//             const PromiseWifiBringingTicks=new Promise((resolve,reject)=>{
+//             setTimeout(()=>resolve('ticket'),3000)
+//                     });
+//                 const getPopcorn= new Promise((resolve,reject)=>resolve(`popcorn`));
+//                 const getCandy= new Promise((resolve,reject)=>resolve(`candy`));
+//                 const getCoke= new Promise((resolve,reject)=>resolve(`Cold drink`));
+            
+//             let ticket=await PromiseWifiBringingTicks;   
+
+//             let [popcorn,condy,coke]=await Promise.all([getPopcorn,getCandy,getCoke]);
+//             console.log(`${popcorn} ${condy} ${coke}`);
+//             return ticket;
+//         }
+//         preMovie().then((m)=>console.log(`Person3: show ${m}`));
+
+//         console.log('Person4: show ticket');
+//         console.log('person5: show ticket');
+        
+              // ***************Problem1******************************
+        // async function playplaystation(){
+        //     console.log('a');
+        //     console.log('b');
+        //     const message=await new Promise((res,rej)=>{
+        //         setTimeout(()=>{res('Buying a playStation')},1000)
+        //     })
+        //     console.log(message);
+        //     const message2= await new Promise((res,rej)=>{
+        //          setTimeout(()=>{
+        //             console.log('Starting the ps5')
+        //             res('Booting ps5')},500);
+        //     })
+           
+        //     console.log(message2)
+        //     console.log('Playing');
+        // }
+        // playplaystation();
+
+        // **********************problem2 (Creating a call back hell)*****************************
+        // function BuyCar(plan,reach){
+        //     setTimeout(()=>{
+        //         console.log('Buy a car');
+        //         plan(reach);
+        //     },1000)
+        // }
+
+        //  function PlanTrip(reach){
+        //     setTimeout(()=>{
+        //         console.log('Let go to manali');
+        //         reach();
+        //     },2000)
+        // }
+        //  function ReachManali(){
+        //     setTimeout(()=>{
+        //         console.log('Reach Manali');
+                
+        //     },1000)
+        // }
+        // BuyCar(PlanTrip,ReachManali);
+        // *********************************Why are Promise invented(to safe for call back)************************
+         function BuyCar(){
+            return new Promise((res,rej)=>{
+                setTimeout(()=>{
+                    res('Buy a car')},1000)
+            })  
+        }
+         function PlanTrip(){
+            return new Promise((res,rej)=>{
+                    setTimeout(()=>{
+                    res('Let go to manali');
+                    },2000)
+            })
+          
+        }
+         function ReachManali(){
+            return new Promise((res,rej)=>{
+                setTimeout(()=>{
+                res('Reach Manali');
+            },1000)
+            })
+            
+        }
+        BuyCar()
+                .then((msg)=>{
+                    console.log(msg);
+>>>>>>> 1bd81496334dbf32fa0db8ea08cde8268af17d15
+
+                    PlanTrip().then((msg)=>{
+                                console.log(msg);
+                                ReachManali().then((msg)=>{
+                                                console.log(msg);
+                                                });
+                             });
+                
+                    });
     </script>
 </body>
 </html>
