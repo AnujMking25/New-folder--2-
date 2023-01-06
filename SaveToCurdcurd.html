@@ -22,7 +22,15 @@
         <ul id='listOfitems'></ul>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
         <script>
-showListofRegisteredUser()
+            
+
+            window.addEventListener('DOMContentLoaded',(event)=>{
+            axios('https://crudcrud.com/api/fcc7e1942b1742b7807b28af76873ad6/appoinmentData')
+            .then((res)=>{console.log(res)
+            showListofRegisteredUser()
+            })
+            .catch(err=>console.log(err))
+          })
             function saveToLocalStorage(event) {
                 event.preventDefault();
                 const name = event.target.username.value;
@@ -34,63 +42,56 @@ showListofRegisteredUser()
                     email,
                     phonenumber
                 }
-                axios.post('https://crudcrud.com/api/edd8f280eaed4aebabc7f50d094bbe60/appointmentData', obj)
+                axios.post('https://crudcrud.com/api/fcc7e1942b1742b7807b28af76873ad6/appoinmentData', obj)
                 .then(res=>console.log(res))
                 .catch(err=>console.log(err))
-                // localStorage.setItem(obj.email, JSON.stringify(obj))
-            
-            }
-            // window.addEventListener('DOMContentLoaded', (event) => {
-            //     Object.keys(localStorage).forEach(key => {
-            //         const user = JSON.parse(localStorage.getItem(key))
-            //         showListofRegisteredUser()
-            //     })
-            // })
+                  window.location.reload(true);
+                
+                
+            }          
+         
             function showListofRegisteredUser(){
 
-
-                axios('https://crudcrud.com/api/edd8f280eaed4aebabc7f50d094bbe60/appointmentData')
+                axios('https://crudcrud.com/api/fcc7e1942b1742b7807b28af76873ad6/appoinmentData')
                 .then((res)=>{
                     // console.log(res.data);
-                    // console.log(res);
+                     console.log(res);
                 
                     const parentNode = document.getElementById('listOfitems');
-                   
                     res.data.forEach(element => {
-                        const createNewUserHtml = `<li >${element.name} => ${element.email} => ${element.phonenumber}
-                                            <button onclick=deleteUser()>Delete</button>
-                                            <button onclick="edituser()">edit </button>
+                        
+                    const createNewUserHtml = `<li id="${element._id}">${element.name} => ${element.email} => ${element.phonenumber}
+                                            <button onclick="deleteUser('${element._id}')">Delete</button>
+                                            <button onclick="edituser('${element._id}','${element.name}','${element.email}','${element.phonenumber}')">Edit</button>
                                             </li>`
-                //console.log(createNewUserHtml)
-                parentNode.innerHTML = parentNode.innerHTML+ createNewUserHtml;
-                    });
                 
+                    parentNode.innerHTML = parentNode.innerHTML+ createNewUserHtml;
+                    });
+                })
+                .catch(err=>{console.log(err);})
+            }
+            function deleteUser(unqid) {
+              
+                axios.delete(`https://crudcrud.com/api/fcc7e1942b1742b7807b28af76873ad6/appoinmentData/${unqid}`)
+                .then(()=>{console.log("Deleted Successfully");
+            
                 })
                 .catch(err=>console.log(err))
-               
-             
-
+                removeItemFromScreen(unqid)
             }
-            function deleteUser(email) {
-
-                localStorage.removeItem(email)
-                removeItemFromScreen(email)
-            }
-            function removeItemFromScreen(email){
+            function removeItemFromScreen(unqid){
                 const parentNode = document.getElementById('listOfitems');
-                const elem = document.getElementById(email)
+                const elem = document.getElementById(unqid)
                 parentNode.removeChild(elem);
             }
-
-            function edituser(email,name,phonenumber)
+            function edituser(unqid,Name,Email,PNumber)
             {
-                console.log(email,name,phonenumber);
-                    document.getElementById("username").value=name
-                    document.getElementById("emailId").value=email
-                    document.getElementById("phonenumber").value=phonenumber
-                    removeItemFromScreen(email)
+                // console.log(Name);
+                document.getElementById('username').value=Name
+                document.getElementById('emailId').value=Email
+                document.getElementById('phonenumber').value=PNumber
+                deleteUser(unqid)  
                 
-
             }
         </script>
 

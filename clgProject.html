@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Details</title>
+</head>
+<body>
+    <form onsubmit="SaveToServer(event)">
+        <label for="Subject">Subject Name</label>
+        <input type="text" id="SubName"/>
+        <label for="Teacher_Name">Teacher Name</label>
+        <input type="text" id="TeacherName"/>
+        <label for="Unit">No of Units</label>
+        <input type="number" id="TotalUnit"/>
+        <label for="CompleteUnit">No of Completed Unit</label>
+        <input type="number" id="DoneUnit"/><br>
+        <!-- <label for="DoneSubject">Percentage</label>
+        <input  id="DonePercentage"> -->
+        <button>Submit</button>
+    </form>
+    <ul id='listOfitems'></ul>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+
+            window.addEventListener('DOMContentLoaded',(event)=>{
+                axios('https://crudcrud.com/api/315717c057d5421cb348c516a380091c/clgData')
+                .then(res=>{
+                    console.log(res);
+                    ShowResult()
+                })
+                .catch(err=>console.log(err))
+            })
+
+        function SaveToServer(event){
+            event.preventDefault();
+
+            const SubName=document.getElementById('SubName').value;
+            const TeacherName=document.getElementById('TeacherName').value;
+            const TotalUnit=document.getElementById('TotalUnit').value;
+            const DoneUnit=document.getElementById('DoneUnit').value;
+             const ans=(DoneUnit/TotalUnit)*100
+            // document.getElementById('DonePercentage').value=res+"%"
+            // console.log(SubName,TeacherName,TotalUnit,DoneUnit);
+            const obj={
+                SubName,
+                TeacherName,
+                TotalUnit,
+                DoneUnit,
+                ans
+            }
+            axios.post('https://crudcrud.com/api/315717c057d5421cb348c516a380091c/clgData',obj)
+            .then(res=>console.log(rse))
+            .catch(err=>console.log(err))
+            window.location.reload(true)            
+        }
+
+        function ShowResult(){
+            axios('https://crudcrud.com/api/315717c057d5421cb348c516a380091c/clgData')
+            .then(res=>{
+                console.log(res)
+                const parentNode = document.getElementById('listOfitems');
+                    res.data.forEach(element => {
+                        
+                    const createNewUserHtml = `<li id="${element._id}">${element.SubName} => ${element.TeacherName} => ${element.TotalUnit}=>${element.DoneUnit}=>${element.ans}
+                                            <button onclick="deleteUser('${element._id}')">Delete</button>
+                                            <button onclick="edituser('${element._id}','${element.SubName}','${element.TeacherName}','${element.TotalUnit}','${element.DoneUnit}')">Edit</button>
+                                            </li>`
+                
+                    parentNode.innerHTML = parentNode.innerHTML+ createNewUserHtml;
+                });
+            }
+            ).catch(err=>console.log(err))
+        }
+
+        function deleteUser(unqid) {
+              
+              axios.delete(`https://crudcrud.com/api/315717c057d5421cb348c516a380091c/clgData/${unqid}`)
+              .then(()=>{console.log("Deleted Successfully");
+          
+              })
+              .catch(err=>console.log(err))
+              removeItemFromScreen(unqid)
+          }
+          function removeItemFromScreen(unqid){
+              const parentNode = document.getElementById('listOfitems');
+              const elem = document.getElementById(unqid)
+              parentNode.removeChild(elem);
+          }
+          function edituser(unqid,SubName,TeacherName,TotalUnit,DoneUnit)
+          {
+              // console.log(Name);
+              document.getElementById('SubName').value=SubName
+              document.getElementById('TeacherName').value=TeacherName
+              document.getElementById('TotalUnit').value=TotalUnit
+              document.getElementById('DoneUnit').value=DoneUnit
+
+              deleteUser(unqid)  
+              
+          }
+
+    </script>
+</body>
+</html>

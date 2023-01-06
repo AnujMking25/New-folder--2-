@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test1</title>
+</head>
+<body>
+    <form onsubmit="savetocurd(event)">
+        <label for="Selling">Selling price</label>
+        <input type="number" id="SellingPrice">
+        <label for="Product">Product Name</label>
+        <input type="text" id="ProductName">
+        <button>Add Product</button><br>
+        
+    </form>
+    <h1>Products</h1>
+    <!-- <h3>Total Value Worth of Product:</h3> -->
+    <ul id="listoFItem"></ul>
+    <h3 >Total value worth of Products:RS <input type="number" id="count" ></h3>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+
+        window.addEventListener('DOMContentLoaded',(event)=>{
+        showData()
+        })
+        function savetocurd(event){
+            event.preventDefault();
+            const SellingPrice=event.target.SellingPrice.value;
+            const ProductName=event.target.ProductName.value;
+
+            const obj={
+                SellingPrice,
+                ProductName
+            }
+    
+        axios.post('https://crudcrud.com/api/6ac3714cc8f94e9eb556bd98e499b598/sellingData', obj)
+        .then(res=>console.log(res))
+        .catch(err=>console.log(err))
+        window.location.reload(true)
+        }
+
+        function showData(){
+            axios('https://crudcrud.com/api/6ac3714cc8f94e9eb556bd98e499b598/sellingData')
+            .then(res=>{
+                const parentNode=document.getElementById('listoFItem')
+                let totalamount=0
+                    res.data.forEach(element => {
+                        const newData=`<li id='${element._id}'>${element.SellingPrice} -${element.ProductName}
+                            <button onclick="deleteProduct('${element._id}')">Delete</button>
+                            </li>`
+                            totalamount=totalamount+JSON.parse(element.SellingPrice);
+                            parentNode.innerHTML=parentNode.innerHTML+newData; 
+
+                    });
+                    document.getElementById("count").value=totalamount
+                    
+                            console.log(totalamount);
+            })
+            .catch(err=>console.log(err))
+        }
+        
+        function deleteProduct(id){
+            axios.delete(`https://crudcrud.com/api/6ac3714cc8f94e9eb556bd98e499b598/sellingData/${id}`)
+            .then(res=>console.log("deleted succefully"))
+            .catch(err=>console.log(err))
+            window.location.reload(true)
+
+        }
+    </script>
+</body>
+</html>
